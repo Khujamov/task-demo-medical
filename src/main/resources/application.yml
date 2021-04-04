@@ -1,0 +1,15 @@
+spring:
+  main:
+    banner-mode: off
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+  datasource:
+    hikari:
+      pool-name: hikari-cp
+
+#logging:
+#  level:
+#    org:
+#      springframework: ERROR
