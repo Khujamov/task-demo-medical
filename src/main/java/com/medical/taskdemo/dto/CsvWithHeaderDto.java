@@ -1,6 +1,6 @@
 package com.medical.taskdemo.dto;
 
-import com.opencsv.bean.CsvBindByPosition;
+import com.opencsv.bean.CsvBindByName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,22 +10,22 @@ import java.util.Objects;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CsvDto {
+public class CsvWithHeaderDto {
 
-    @CsvBindByPosition(position = 0)
+    @CsvBindByName
     private String id;
 
-    @CsvBindByPosition(position = 1)
+    @CsvBindByName
     private String name;
 
-    @CsvBindByPosition(position = 2)
+    @CsvBindByName(column = "doc_date")
     private String docDate;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        CsvDto that = (CsvDto) o;
+        CsvWithHeaderDto that = (CsvWithHeaderDto) o;
         return id.equals(that.id);
     }
 
