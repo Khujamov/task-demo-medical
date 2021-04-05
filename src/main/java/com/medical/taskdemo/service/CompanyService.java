@@ -17,10 +17,7 @@ import javax.transaction.Transactional;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -42,6 +39,7 @@ public class CompanyService {
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
             CsvToBean<CsvDto> csvToBean = new CsvToBeanBuilder(reader).withType(CsvDto.class).withIgnoreLeadingWhiteSpace(true).build();
             List<CsvDto> products = csvToBean.parse();
+            products.sort(Comparator.comparing(CsvDto::getIdLength));
             products.forEach(csvDto -> {
                 String csvId = csvDto.getId().trim();
                 String name = csvDto.getName();

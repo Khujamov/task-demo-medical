@@ -21,6 +21,10 @@ public class CsvDto {
     @CsvBindByPosition(position = 2)
     private String docDate;
 
+    public int getIdLength() {
+        return this.id.trim().length();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
